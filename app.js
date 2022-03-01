@@ -12,7 +12,7 @@ const searchButton = () => {
 const displayShow = show => {
     const searchResult = document.getElementById("search-result");
     searchResult.textContent = "";
-    // console.log(show);
+    // Check result
     if (show.length == 0) {
         const found = document.getElementById("not-found");
         found.innerText = "Not found result";
@@ -37,6 +37,7 @@ const displayShow = show => {
     }
 }
 
+// Details information function
 const DetailsFunction = info => {
     const url = `https://openapi.programming-hero.com/api/phone/${info}`
     fetch(url)
@@ -52,12 +53,12 @@ const DetailsDisplay = show => {
     const create = document.createElement("div");
     create.innerHTML = ` 
         <div class="p-3 m-2">
-           <img class="img-fluid" src="${show.image}" alt="">
+           <img class="img-fludi" src="${show.image}" alt="">
            <p class="lead my-3">Name : ${show.name}</p>
-           <p>ralage date:</p>
+            <p>releaseDate: ${show.releaseDate?show.releaseDate:'No found releaseDate'}</p>
         </div>
 
-       <div class="p-3 m-2">
+       <div class="p-3">
            <p> <span class="text-danger">storage : </span> ${show.mainFeatures.storage}</p>
            <p> <span class="text-danger">display Size : </span> ${show.mainFeatures.displaySize} </p>
            <p> <span class="text-danger">chipSet : </span>${show.mainFeatures.chipSet} </p>
@@ -83,8 +84,3 @@ const DetailsDisplay = show => {
     `
     detailsInfo.appendChild(create);
 }
-
-
-// const load = () => {
-
-// }
