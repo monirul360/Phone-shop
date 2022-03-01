@@ -41,5 +41,50 @@ const DetailsFunction = info => {
     const url = `https://openapi.programming-hero.com/api/phone/${info}`
     fetch(url)
         .then(Response => Response.json())
-        .then(show => console.log(show.data.mainFeatures));
+        .then(show => DetailsDisplay(show.data));
 }
+
+
+const DetailsDisplay = show => {
+    console.log(show);
+    const detailsInfo = document.getElementById("details-info");
+    detailsInfo.textContent = "";
+    const create = document.createElement("div");
+    create.innerHTML = ` 
+        <div class="p-3 m-2">
+           <img class="img-fluid" src="${show.image}" alt="">
+           <p class="lead my-3">Name : ${show.name}</p>
+           <p>ralage date:</p>
+        </div>
+
+       <div class="p-3 m-2">
+           <p> <span class="text-danger">storage : </span> ${show.mainFeatures.storage}</p>
+           <p> <span class="text-danger">display Size : </span> ${show.mainFeatures.displaySize} </p>
+           <p> <span class="text-danger">chipSet : </span>${show.mainFeatures.chipSet} </p>
+          <p> <span class="text-danger">memory : </span>${show.mainFeatures.memory}</p>
+          <p>sensors information</p>
+          <ul>
+            <li>${show.mainFeatures.sensors[0]}</li>
+            <li>${show.mainFeatures.sensors[1]}</li>
+            <li>${show.mainFeatures.sensors[2]}</li>
+            <li>${show.mainFeatures.sensors[3]}</li>
+            <li>${show.mainFeatures.sensors[4]}</li>
+             <li>${show.mainFeatures.sensors[5]}</li>
+          </ul>
+            <p>others information</p>
+           <p> <span class="text-danger"> WLAN : </span>${show.others.WLAN} </p>
+            <p> <span class="text-danger"> Bluetooth : </span>${show.others.Bluetooth} </p>
+             <p> <span class="text-danger"> GPS : </span>${show.others.GPS} </p>
+              <p> <span class="text-danger"> NFC : </span>${show.others.NFC} </p>
+               <p> <span class="text-danger"> Radio : </span>${show.others.Radio} </p>
+                <p> <span class="text-danger"> USB : </span>${show.others.USB} </p>
+        </div>
+
+    `
+    detailsInfo.appendChild(create);
+}
+
+
+// const load = () => {
+
+// }
