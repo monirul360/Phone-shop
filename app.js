@@ -3,6 +3,9 @@ const searchButton = () => {
         const searchField = document.getElementById("input-field");
         const searchText = searchField.value;
         searchField.value = "";
+        const detailsClear = document.getElementById("details-info");
+        detailsClear.textContent = "";
+
         const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
         fetch(url)
             .then(Response => Response.json())
@@ -12,7 +15,7 @@ const searchButton = () => {
 const displayShow = show => {
     const searchResult = document.getElementById("search-result");
     searchResult.textContent = "";
-    // Check result
+    // check result
     if (show.length == 0) {
         const found = document.getElementById("not-found");
         found.innerText = "Not found result";
@@ -47,7 +50,6 @@ const DetailsFunction = info => {
 
 
 const DetailsDisplay = show => {
-    console.log(show);
     const detailsInfo = document.getElementById("details-info");
     detailsInfo.textContent = "";
     const create = document.createElement("div");
